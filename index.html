@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sachin ❤️ Ruthu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:
+        linear-gradient(rgba(255,77,109,0.65), rgba(255,143,163,0.65)),
+        url('https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=300&q=80'),
+        url('https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?auto=format&fit=crop&w=300&q=80'),
+        url('https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=300&q=80'),
+        url('https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=300&q=80');
+      background-size: cover, 160px 160px, 180px 180px, 150px 150px, 200px 200px;
+      background-repeat: no-repeat, repeat, repeat, repeat, repeat;
+      background-position: center, top left, top right, bottom left, bottom right;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      padding: 28px 22px;
+      max-width: 420px;
+      width: 92%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    h1 { font-size: 1.9rem; margin-bottom: 14px; }
+    .bold { font-weight: 800; }
+
+    .btn {
+      border: none;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: #fff;
+      color: #ff4d6d;
+      margin-top: 14px;
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .options { position: relative; height: 140px; margin-top: 30px; }
+
+    .no {
+      position: absolute;
+      left: 50%;
+      top: 70px;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.35);
+      color: #fff;
+    }
+
+    /* Agreement styling */
+    .agreement {
+      background: rgba(255,255,255,0.92);
+      color: #333;
+      padding: 18px;
+      border-radius: 18px;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .agreement h2 {
+      text-align: center;
+      color: #ff4d6d;
+      margin-top: 0;
+    }
+
+    .agreement ul { padding-left: 18px; }
+
+    .sign {
+      display: block;
+      width: 100%;
+      margin-top: 16px;
+      background: #ff4d6d;
+      color: #fff;
+    }
+
+    .celebrate h1 {
+      font-family: 'Comic Neue', cursive;
+      font-size: 2.2rem;
+    }
+
+    .gif {
+      width: 220px;
+      margin-top: 20px;
+      border-radius: 16px;
+    }
+
+    .graffiti { position: fixed; inset: 0; pointer-events: none; }
+    .spray {
+      position: absolute;
+      font-size: 24px;
+      animation: pop 2.5s ease-out forwards;
+    }
+
+    @keyframes pop {
+      from { opacity: 0; transform: scale(0.3) rotate(0deg); }
+      to { opacity: 1; transform: scale(1.3) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="graffiti" id="graffiti"></div>
+
+<div class="card">
+
+  <!-- PAGE 1 -->
+  <div class="page active" id="page1">
+    <h1 class="bold">If you know Sachin ❤️<br>and like his surprises 😌</h1>
+    <p class="bold">Then click next 👇</p>
+    <button class="btn" onclick="nextPage()">Next ➜</button>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page" id="page2">
+    <h1 class="bold">RUTHU,<br>WILL YOU BE MY VALENTINE? 💖</h1>
+    <div class="options">
+      <button class="btn" onclick="showAgreement()">YES 😍</button>
+      <button class="btn no" id="noBtn">NO 🙈</button>
+    </div>
+  </div>
+
+  <!-- PAGE 3 AGREEMENT -->
+  <div class="page" id="agreement">
+    <div class="agreement">
+      <h2>💖 Valentine Agreement 💖</h2>
+      <p>This agreement is between <b>Ruthu</b> and <b>Sachin</b>.</p>
+      <ul>
+        <li>Unlimited love & care 💕</li>
+        <li>Daily smiles & surprises 🎁</li>
+        <li>Official Valentine forever 💑</li>
+      </ul>
+      <p><b>Valid for lifetime.</b></p>
+      <button class="btn sign" onclick="celebrate()">Sign Agreement ✍️</button>
+    </div>
+  </div>
+
+  <!-- FINAL PAGE -->
+  <div class="page celebrate" id="final">
+    <h1>Sachin is Lucky 💃❤️</h1>
+    <img class="gif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" />
+  </div>
+
+</div>
+
+<script>
+  function nextPage() {
+    page1.classList.remove('active');
+    page2.classList.add('active');
+  }
+
+  function showAgreement() {
+    page2.classList.remove('active');
+    agreement.classList.add('active');
+  }
+
+  function celebrate() {
+    agreement.classList.remove('active');
+    final.classList.add('active');
+    sprayGraffiti();
+  }
+
+  const noBtn = document.getElementById('noBtn');
+  noBtn.addEventListener('mouseover', moveNo);
+  noBtn.addEventListener('touchstart', moveNo);
+
+  function moveNo() {
+    const p = noBtn.parentElement;
+    noBtn.style.left = Math.random() * (p.offsetWidth - 80) + 'px';
+    noBtn.style.top = Math.random() * (p.offsetHeight - 40) + 'px';
+  }
+
+  const graffiti = document.getElementById('graffiti');
+  const emojis = ['❤️','💖','💘','🎉','✨','💃','🕺','🐱'];
+
+  function sprayGraffiti() {
+    for (let i = 0; i < 40; i++) {
+      const s = document.createElement('div');
+      s.className = 'spray';
+      s.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      s.style.left = Math.random() * 100 + 'vw';
+      s.style.top = Math.random() * 100 + 'vh';
+      graffiti.appendChild(s);
+    }
+  }
+</script>
+
+</body>
+</html>
